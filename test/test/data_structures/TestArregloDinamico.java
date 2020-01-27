@@ -29,9 +29,13 @@ public class TestArregloDinamico {
 	}
 
 	@Test
-	public void testDarElemento() {
+	public void testDarElemento() 
+	{
 		setUp2();
 		// TODO
+		assertEquals("No es el elemento esperado","1" , arreglo.darElemento(1));
+		assertEquals("No es el elemento esperado","50" , arreglo.darElemento(50));
+		assertEquals("No es el elemento esperado","199" , arreglo.darElemento(199));
 	}
 
 }
