@@ -18,7 +18,7 @@ public class TestModelo {
 
 	public void setUp2() {
 		for(int i =0; i< CAPACIDAD;i++){
-			modelo.agregar(""+i);
+			modelo.agregar(i);
 		}
 	}
 
@@ -42,7 +42,7 @@ public class TestModelo {
 			// TODO Completar la prueba
 			setUp2();
 			assertEquals("No tiene el numero de elementos esperados", 100,modelo.darTamano());
-			modelo.agregar("prueba");
+			modelo.agregar(0);
 			assertEquals("No tiene el numero de elementos esperados", 101,modelo.darTamano());
 			
 	}
@@ -52,17 +52,21 @@ public class TestModelo {
 	{
 		setUp2();
 		// TODO Completar la prueba
-		assertEquals("No se encontro el objeto esperado","2",modelo.buscar("2") );
-		assertEquals("No se encontro el objeto esperado","99",modelo.buscar("99") );
-		assertNotNull("El objeto deberia ser distinto de null",modelo.buscar("50"));
+		assertEquals("No se encontro el objeto esperado",(Integer)2,modelo.buscar(2) );
+		assertNotNull("El onjeto no deberia ser null", modelo.buscar(2));
+		assertEquals("No se encontro el objeto esperado",(Integer)99,modelo.buscar(99) );
+		assertNotNull("El objeto deberia ser distinto de null",modelo.buscar(50));
 	}
 	@Test
 	public void testEliminar() {
 		setUp2();
 		// TODO Completar la prueba
-		modelo.eliminar(modelo.dardatos().darElemento(0));
-		assertNull("el elemento no debería existir", modelo.dardatos().darElemento(0));	
-		
+		modelo.eliminar((Integer) modelo.dardatos().darElemento(0));
+		assertEquals("El elemento no es el esperado",1, modelo.dardatos().darElemento(0));	
+
+		assertEquals("El elemento no es el esperado",99, modelo.dardatos().darElemento(98));	
+
+		assertNull("El elemento no fue eliminado correctamente", modelo.dardatos().darElemento(99) );
 		
 		
 	}
